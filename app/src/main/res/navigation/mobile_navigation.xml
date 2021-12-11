@@ -11,20 +11,18 @@
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
     <fragment
-        android:id="@+id/nav_pending_orders"
-        android:name="com.ravikumar.testapp.fragments.PendingOrdersFragment"
+        android:id="@+id/nav_favorites"
+        android:name="com.ravikumar.testapp.fragments.FavoritesFragment"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" />
+    <fragment
+        android:id="@+id/nav_cart"
+        android:name="com.ravikumar.testapp.fragments.CartFragment"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart" />
+    <fragment
+        android:id="@+id/nav_my_orders"
+        android:name="com.ravikumar.testapp.fragments.MyOrdersFragment"
         android:label="fragment_pending_orders"
-        tools:layout="@layout/fragment_pending_orders" />
-
-    <!--    <fragment-->
-    <!--        android:id="@+id/nav_gallery"-->
-    <!--        android:name="com.ravikumar.navigationdrawer.ui.gallery.GalleryFragment"-->
-    <!--        android:label="@string/menu_gallery"-->
-    <!--        tools:layout="@layout/fragment_gallery" />-->
-
-    <!--    <fragment-->
-    <!--        android:id="@+id/nav_slideshow"-->
-    <!--        android:name="com.ravikumar.navigationdrawer.ui.slideshow.SlideshowFragment"-->
-    <!--        android:label="@string/menu_slideshow"-->
-    <!--        tools:layout="@layout/fragment_slideshow" />-->
+        tools:layout="@layout/fragment_my_orders" />
 </navigation>
