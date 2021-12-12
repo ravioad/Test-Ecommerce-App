@@ -7,6 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="backgroundColor">#F1F2F3</color>
 
     <color name="gradient_start">#01C875</color>
     <color name="gradient_end">#4ae09f</color>
@@ -14,6 +15,7 @@
 
     <color name="colorPrimary">#7CFFBB</color>
     <color name="colorPrimaryDark">#01C875</color>
+    <color name="shimmer_placeholder">#B8B8B8</color>
     <color name="colorAccent">#01C875</color>
     <color name="greyColor">#757577</color>
 </resources>

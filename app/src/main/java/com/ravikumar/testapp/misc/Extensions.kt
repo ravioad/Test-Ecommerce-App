@@ -3,9 +3,12 @@ package com.ravikumar.testapp.misc
 import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
-import android.graphics.Color
+import android.util.Log
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import com.ravikumar.testapp.BuildConfig
+import com.ravikumar.testapp.R
 import com.ravikumar.testapp.activities.OnBoardingActivity
 
 
@@ -29,7 +32,17 @@ fun Activity.setWhiteStatusBarColor() {
     val wic = WindowInsetsControllerCompat(window, decorView)
     wic.isAppearanceLightStatusBars = true // true or false as desired.
     // And then you can set any background color to the status bar.
-    window.statusBarColor = Color.WHITE
+    window.statusBarColor = ContextCompat.getColor(this, R.color.backgroundColor)
+}
+
+fun String.printLog(text: Any?) {
+    if (BuildConfig.DEBUG) {
+        Log.e(this, if (text !is String) text.toString() else text)
+    }
+}
+
+fun String.toLinkFormat(): String {
+    return this.replace("'", "%27").replace(" ", "%20")
 }
 
 fun View.makeVisible() {
