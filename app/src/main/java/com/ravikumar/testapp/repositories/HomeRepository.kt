@@ -15,7 +15,7 @@ import javax.inject.Inject
 import kotlin.coroutines.resume
 
 
-class HomeRepository @Inject constructor(private val localDataSource: LocalDataSource) {
+class HomeRepository @Inject constructor(private val localDataSource: LocalDataSource?) {
     suspend fun getAllProducts(): Resource<List<Product>> =
         suspendCancellableCoroutine { coroutine ->
             val client = OkHttpClient().newBuilder()
@@ -31,31 +31,36 @@ class HomeRepository @Inject constructor(private val localDataSource: LocalDataS
                 }
 
                 override fun onResponse(call: Call, response: Response) {
-                    try {
-                        val responseBody = response.body?.string()
-                        val list: List<Product> = Gson().fromJson(
-                            responseBody,
-                            object : TypeToken<List<Product>>() {}.type
-                        )
-                        if (response.isSuccessful) {
-                            coroutine.resume(Resource.Success(list))
-                        } else {
-                            coroutine.resume(Resource.Error(Constants.unknownError))
-                        }
-                    } catch (e: Exception) {
-                        "getAllProducts".printLog(e)
+                    val responseBody = response.body?.string()
+                    if (response.isSuccessful) {
+                        coroutine.resume(getListFromResponse(responseBody))
+                    } else {
                         coroutine.resume(Resource.Error(Constants.unknownError))
                     }
+
 
                 }
             })
         }
 
+    fun getListFromResponse(response: String?): Resource<List<Product>> {
+        return try {
+            val list: List<Product> = Gson().fromJson(
+                response,
+                object : TypeToken<List<Product>>() {}.type
+            )
+            Resource.Success(list)
+        } catch (e: Exception) {
+            "getAllProducts".printLog(e)
+            Resource.Error(Constants.unknownError)
+        }
+    }
+
     fun addFavorite(product: Product) {
-        localDataSource.addFavorite(product)
+        localDataSource?.addFavorite(product)
     }
 
     fun removeFavorite(product: Product) {
-        localDataSource.removeFavorite(product)
+        localDataSource?.removeFavorite(product)
     }
 }

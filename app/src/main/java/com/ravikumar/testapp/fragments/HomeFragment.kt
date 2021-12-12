@@ -110,7 +110,7 @@ class HomeFragment : Fragment(), ChipGroup.OnCheckedChangeListener {
 
     override fun onCheckedChanged(group: ChipGroup?, checkedId: Int) {
         try {
-            val chipTag: String = (group?.findViewById<Chip>(checkedId)?.tag as String?) ?: "X"
+            val chipTag: String = (group?.findViewById<Chip>(checkedId)?.tag as String?) ?: ""
             productsList?.let {
                 val filteredList = it.filter { product -> product.category.lowercase() == chipTag }
                 setRecyclerViewAdapter(if (filteredList.isNotEmpty()) filteredList else it)
