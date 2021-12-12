@@ -4,6 +4,7 @@
     package="com.ravikumar.testapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".misc.MyApplication"
         android:icon="@mipmap/ic_launcher"
@@ -12,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TestApp"
         tools:ignore="AllowBackup">
+        <activity
+            android:name=".activities.ProductActivity"
+            android:exported="false" />
         <activity
             android:name=".activities.OnBoardingActivity"
             android:exported="true">

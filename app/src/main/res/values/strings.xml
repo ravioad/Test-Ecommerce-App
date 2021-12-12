@@ -9,4 +9,6 @@
     <string name="perfectChoice">Perfect Choice!</string>
     <string name="search">Search</string>
     <string name="all">all</string>
+    <string name="addToCart">Add To Cart</string>
+    <string name="initialCount">1</string>
 </resources>
