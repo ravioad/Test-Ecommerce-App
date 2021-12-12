@@ -1,6 +1,8 @@
 # Test-Ecommerce-App
 
 This app uses fake store api to fetch and display products, and contains favorites and cart functionality.
+Minimum SDK: 21 (Android Lollipop)
+Target SDK: 31 (Android S)
 
 Libraries Used
 --------------
