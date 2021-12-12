@@ -3,6 +3,7 @@ package com.ravikumar.testapp.di
 import android.content.Context
 import androidx.room.Room
 import com.ravikumar.testapp.roomDb.AppDatabase
+import com.ravikumar.testapp.roomDb.CartDao
 import com.ravikumar.testapp.roomDb.FavoritesDao
 import dagger.Module
 import dagger.Provides
@@ -28,5 +29,10 @@ class DatabaseModule {
     @Provides
     fun provideFavoritesDao(database: AppDatabase): FavoritesDao {
         return database.favoritesDao()
+    }
+
+    @Provides
+    fun provideCartDao(database: AppDatabase): CartDao {
+        return database.cartDao()
     }
 }

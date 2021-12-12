@@ -20,9 +20,4 @@
         android:name="com.ravikumar.testapp.fragments.CartFragment"
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart" />
-    <fragment
-        android:id="@+id/nav_my_orders"
-        android:name="com.ravikumar.testapp.fragments.MyOrdersFragment"
-        android:label="fragment_pending_orders"
-        tools:layout="@layout/fragment_my_orders" />
 </navigation>

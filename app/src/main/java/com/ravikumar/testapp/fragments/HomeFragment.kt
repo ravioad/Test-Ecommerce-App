@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.ravikumar.testapp.R
+import com.ravikumar.testapp.activities.MainActivity
 import com.ravikumar.testapp.adapters.ProductsRVAdapter
 import com.ravikumar.testapp.databinding.CategoryChipLayoutBinding
 import com.ravikumar.testapp.databinding.FragmentHomeBinding
@@ -62,6 +63,7 @@ class HomeFragment : Fragment(), ChipGroup.OnCheckedChangeListener {
                 }
                 is Resource.Error -> {
                     hideLoading()
+                    (requireActivity() as? MainActivity)?.showAlert(result.message)
                 }
             }
         })

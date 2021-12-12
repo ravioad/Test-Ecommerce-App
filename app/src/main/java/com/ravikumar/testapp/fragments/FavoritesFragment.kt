@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ravikumar.testapp.adapters.FavoritesRVAdapter
 import com.ravikumar.testapp.databinding.FragmentFavoritesBinding
+import com.ravikumar.testapp.misc.makeGone
+import com.ravikumar.testapp.misc.makeVisible
 import com.ravikumar.testapp.misc.printLog
 import com.ravikumar.testapp.models.Product
 import com.ravikumar.testapp.viewModels.FavoritesViewModel
@@ -45,10 +47,20 @@ class FavoritesFragment : Fragment() {
         viewModel.getOnAllProductsLiveData().observe(viewLifecycleOwner, {
             "Favorites".printLog(it.size)
             list = ArrayList(it)
-            favoritesAdapter = FavoritesRVAdapter(this@FavoritesFragment, list)
-            setRecyclerViewAdapter()
-            addSwipeToDelete()
+            setupDataToRecyclerView()
+
         })
+    }
+
+    private fun setupDataToRecyclerView() {
+        if (list.isEmpty()) {
+            binding.emptyFavoritesText.makeVisible()
+            binding.recyclerView.makeGone()
+            return
+        }
+        favoritesAdapter = FavoritesRVAdapter(this@FavoritesFragment, list)
+        setRecyclerViewAdapter()
+        addSwipeToDelete()
     }
 
     private fun addSwipeToDelete() {

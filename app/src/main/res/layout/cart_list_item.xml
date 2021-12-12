@@ -19,20 +19,35 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="@dimen/_10sdp">
+            android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/favoritesImageView"
+                android:id="@+id/cartImageView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
                 tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/cartItemCount"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/product_count_background"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/favoritesItemTitle"
+        android:id="@+id/cartItemTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_15sdp"
@@ -44,25 +59,25 @@
         android:textSize="@dimen/_14sdp"
         android:textStyle="bold"
         app:layout_constrainedWidth="true"
-        app:layout_constraintEnd_toStartOf="@id/favoritesItemRemove"
+        app:layout_constraintEnd_toStartOf="@id/cartItemRemove"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@id/imageCardView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/favoritesItemCategory"
+        android:id="@+id/cartItemCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_15sdp"
         android:textColor="@color/black"
         android:textSize="@dimen/_10ssp"
-        app:layout_constraintEnd_toStartOf="@id/favoritesItemRemove"
+        app:layout_constraintEnd_toStartOf="@id/cartItemRemove"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@id/imageCardView"
-        app:layout_constraintTop_toBottomOf="@id/favoritesItemTitle" />
+        app:layout_constraintTop_toBottomOf="@id/cartItemTitle" />
 
     <TextView
-        android:id="@+id/favoritesItemPrice"
+        android:id="@+id/cartItemPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_15sdp"
@@ -71,13 +86,14 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/_14ssp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@id/favoritesItemRemove"
+        app:layout_constraintEnd_toStartOf="@id/cartItemRemove"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@id/imageCardView"
-        app:layout_constraintTop_toBottomOf="@id/favoritesItemCategory" />
+        app:layout_constraintTop_toBottomOf="@id/cartItemCategory" />
+
 
     <ImageView
-        android:id="@+id/favoritesItemRemove"
+        android:id="@+id/cartItemRemove"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/_10sdp"

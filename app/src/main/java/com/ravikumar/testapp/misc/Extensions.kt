@@ -5,11 +5,14 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import com.ravikumar.testapp.BuildConfig
 import com.ravikumar.testapp.R
 import com.ravikumar.testapp.activities.OnBoardingActivity
+import java.math.BigDecimal
+import java.math.RoundingMode
 
 
 fun OnBoardingActivity.saveSeenState() {
@@ -41,8 +44,12 @@ fun String.printLog(text: Any?) {
     }
 }
 
-fun String.toLinkFormat(): String {
-    return this.replace("'", "%27").replace(" ", "%20")
+fun String.showToastShort(context: Context) {
+    Toast.makeText(context, this, Toast.LENGTH_SHORT).show()
+}
+
+fun Double.roundTo2Places(): Double {
+    return BigDecimal(this).setScale(2, RoundingMode.HALF_EVEN).toDouble()
 }
 
 fun View.makeVisible() {

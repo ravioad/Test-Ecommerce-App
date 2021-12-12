@@ -2,13 +2,22 @@
     <string name="app_name">Test App</string>
     <string name="getStarted">Get Started</string>
     <string name="menu_home">Home</string>
-    <string name="my_orders">My Orders</string>
     <string name="favorites">Favorites</string>
     <string name="cart">Cart</string>
     <string name="bestProducts">Best Products</string>
     <string name="perfectChoice">Perfect Choice!</string>
     <string name="search">Search</string>
+    <string name="unknownError">An unknown error occurred, please try again later.</string>
+    <string name="connectionError">Connection Problem!</string>
+    <string name="connectionErrorMessage">Please check your internet connection, and try again later.</string>
     <string name="all">all</string>
     <string name="addToCart">Add To Cart</string>
-    <string name="initialCount">1</string>
+    <string name="subTotal">Subtotal</string>
+    <string name="shipping">Shipping</string>
+    <string name="total">Total</string>
+    <string name="proceedToCheckout">Proceed To Checkout</string>
+    <string name="ok">OK</string>
+    <string name="error">Error!</string>
+    <string name="emptyCart">The cart is empty!</string>
+    <string name="emptyFavorites">No favorites added yet!</string>
 </resources>

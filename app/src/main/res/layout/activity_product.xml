@@ -144,12 +144,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/productCountLayout" />
 
-
         <LinearLayout
             android:id="@+id/productCountLayout"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_35sdp"
             android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
             android:background="@drawable/product_rating_layout_background"
             android:gravity="center"
             android:orientation="horizontal"
@@ -160,6 +160,7 @@
             app:layout_constraintTop_toBottomOf="@id/productDescription">
 
             <ImageView
+                android:id="@+id/productRemoveButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:background="?attr/selectableItemBackgroundBorderless"
@@ -175,11 +176,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="@dimen/_5sdp"
-                android:text="@string/initialCount"
                 android:textSize="@dimen/_14ssp"
                 android:textStyle="bold" />
 
             <ImageView
+                android:id="@+id/productAddButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:background="?attr/selectableItemBackgroundBorderless"

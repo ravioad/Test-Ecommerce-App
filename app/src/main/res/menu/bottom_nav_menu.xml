@@ -14,9 +14,5 @@
             android:id="@+id/nav_cart"
             android:icon="@drawable/ic_baseline_shopping_cart_24"
             android:title="@string/cart" />
-        <item
-            android:id="@+id/nav_my_orders"
-            android:icon="@drawable/ic_baseline_pending_actions_24"
-            android:title="@string/my_orders" />
     </group>
 </menu>

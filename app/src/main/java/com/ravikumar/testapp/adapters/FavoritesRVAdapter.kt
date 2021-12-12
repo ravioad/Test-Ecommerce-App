@@ -1,13 +1,17 @@
 package com.ravikumar.testapp.adapters
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.google.gson.Gson
+import com.ravikumar.testapp.activities.ProductActivity
 import com.ravikumar.testapp.databinding.FavoritesListItemBinding
 import com.ravikumar.testapp.fragments.FavoritesFragment
+import com.ravikumar.testapp.misc.Constants
 import com.ravikumar.testapp.models.Product
 
 class FavoritesRVAdapter(
@@ -30,6 +34,12 @@ class FavoritesRVAdapter(
     override fun onBindViewHolder(holder: FavoritesRVAdapter.MyViewHolder, position: Int) {
         val product = list[position]
         holder.bind(product)
+        holder.itemView.setOnClickListener {
+            val intent = Intent(fragment.requireContext(), ProductActivity::class.java).apply {
+                putExtra(Constants.productIntent, Gson().toJson(list[position]))
+            }
+            fragment.startActivity(intent)
+        }
         holder.binding.favoritesItemRemove.setOnClickListener {
             (fragment as? FavoritesFragment)?.removeFromFavorites(position)
         }

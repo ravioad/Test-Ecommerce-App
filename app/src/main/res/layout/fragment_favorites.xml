@@ -7,11 +7,22 @@
     android:background="@color/backgroundColor"
     tools:context=".fragments.FavoritesFragment">
 
+    <TextView
+        android:id="@+id/emptyFavoritesText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/emptyFavorites"
+        android:textSize="@dimen/_14ssp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingHorizontal="@dimen/_10sdp"
+        android:visibility="visible"
         app:layout_constrainedHeight="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
