@@ -1,5 +1,4 @@
 # Test-Ecommerce-App
-=================
 
 This app uses fake store api to fetch and display products. And contains favorites and cart functionality.
 
