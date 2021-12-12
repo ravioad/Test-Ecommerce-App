@@ -113,7 +113,7 @@
             android:layout_marginEnd="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_10sdp"
             android:src="@drawable/favorite_clip_drawable"
-            android:visibility="invisible"
+            android:visibility="visible"
             app:elevation="@dimen/_2sdp"
             app:fabCustomSize="@dimen/_26sdp"
             app:layout_constraintBottom_toBottomOf="parent"

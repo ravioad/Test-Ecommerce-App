@@ -15,18 +15,13 @@ class LocalDataSource @Inject constructor(
         Handler(Looper.getMainLooper())
     }
 
-    //
-//    fun getAllPendingVideosProgresses(callback: (List<Product>) -> Unit) {
-//        executorService.execute {
-//            val videosProgresses = favoritesDao.getAll()
-//            mainThreadHandler.post { callback(videosProgresses) }
-//        }
-//    }
-//
-//    fun getLastVideoWatched(subjectID: String): LiveData<RecentWatchedVideo> {
-//        return recentWatchedVideoDao.getLatestWatchedVideoOfSubject(subjectID)
-//    }
-//
+    fun isAlreadyAdded(id: Int, callback: (Boolean) -> Unit) {
+        executorService.execute {
+            val isAlreadyAdded = favoritesDao.isAlreadyAdded(id)
+            mainThreadHandler.post { callback(isAlreadyAdded) }
+        }
+    }
+
     fun addFavorite(product: Product) {
         executorService.execute {
             favoritesDao.insert(product)
@@ -38,67 +33,4 @@ class LocalDataSource @Inject constructor(
             favoritesDao.delete(product)
         }
     }
-//
-//    fun deleteAllRecentVideos() {
-//        executorService.execute {
-//            recentWatchedVideoDao.deleteAll()
-//        }
-//    }
-//
-//    fun deleteFirstRecentVideo(recentWatchedVideo: RecentWatchedVideo) {
-//        executorService.execute {
-//            recentWatchedVideoDao.delete(recentWatchedVideo)
-//        }
-//    }
-//
-//    fun addRecentVideo(recentWatchedVideo: RecentWatchedVideo) {
-//        executorService.execute {
-//            recentWatchedVideoDao.insert(recentWatchedVideo)
-//        }
-//    }
-//
-//
-//    fun videoProgressExists(progressId: String, callback: (Boolean) -> Unit) {
-//        executorService.execute {
-//            val exists = videoProgressPersistenceModelDao.videoProgressExists(progressId)
-//            mainThreadHandler.post { callback(exists) }
-//        }
-//    }
-//
-//    fun getProgressById(videoProgressId: String, callback: (Int) -> Unit) {
-//        executorService.execute {
-//            val exists = videoProgressPersistenceModelDao.getProgressById(videoProgressId)
-//            mainThreadHandler.post { callback(exists) }
-//        }
-//    }
-//
-//    fun updateVideoProgress(
-//        watchTimeInSeconds: Int,
-//        videoProgressId: String,
-//        callback: (Int) -> Unit
-//    ) {
-//        executorService.execute {
-//            val updateStatus =
-//                videoProgressPersistenceModelDao.update(watchTimeInSeconds, videoProgressId)
-//            mainThreadHandler.post { callback(updateStatus) }
-//        }
-//    }
-//
-//    fun removeVideoProgress(videoProgressPersistenceModel: VideoProgressPersistenceModel) {
-//        executorService.execute {
-//            videoProgressPersistenceModelDao.delete(videoProgressPersistenceModel)
-//        }
-//    }
-//
-//    fun addVideoProgress(
-//        videoProgressPersistenceModel: VideoProgressPersistenceModel,
-//        callback: (Int) -> Unit
-//    ) {
-//        executorService.execute {
-//            val insertedStatus =
-//                videoProgressPersistenceModelDao.insert(videoProgressPersistenceModel)
-//            mainThreadHandler.post { callback(insertedStatus.toInt()) }
-//        }
-//    }
-
 }

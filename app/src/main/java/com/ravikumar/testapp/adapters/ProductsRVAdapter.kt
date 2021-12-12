@@ -36,10 +36,12 @@ class ProductsRVAdapter(
         val product = list[position]
         holder.bind(product)
         holder.binding.addFavorite.setOnClickListener {
-            holder.addFavorite(product)
+            if (fragment is HomeFragment) fragment.addFavorite(product)
+            holder.addFavoriteAnimation()
         }
         holder.binding.removeFavorite.setOnClickListener {
-            holder.removeFavorite(product)
+            if (fragment is HomeFragment) fragment.removeFavorite(product)
+            holder.removeFavoriteAnimation()
         }
     }
 
@@ -54,8 +56,7 @@ class ProductsRVAdapter(
 //
 //        }
 
-        fun addFavorite(product: Product) {
-            if (fragment is HomeFragment) fragment.addFavorite(product)
+        fun addFavoriteAnimation() {
             binding.addFavorite.makeGone()
             binding.removeFavorite.makeVisible()
             val animator = ObjectAnimator.ofInt(binding.removeFavorite.drawable, "level", 10000)
@@ -63,8 +64,7 @@ class ProductsRVAdapter(
             animator.start()
         }
 
-        fun removeFavorite(product: Product) {
-            if (fragment is HomeFragment) fragment.removeFavorite(product)
+        fun removeFavoriteAnimation() {
             binding.addFavorite.makeVisible()
             val animator = ObjectAnimator.ofInt(binding.removeFavorite.drawable, "level", 0)
             animator.duration = 400
@@ -95,6 +95,13 @@ class ProductsRVAdapter(
             binding.itemTitle.text = product.title
             binding.itemCategory.text = product.category.replaceFirstChar { it.uppercase() }
             binding.itemPrice.text = "$ ${product.price}"
+            (fragment as? HomeFragment)?.isFavoriteAlreadyAdded(product.id) {
+                if (it) {
+                    addFavoriteAnimation()
+                } else {
+                    removeFavoriteAnimation()
+                }
+            }
         }
     }
 }

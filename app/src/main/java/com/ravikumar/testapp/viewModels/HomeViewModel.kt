@@ -15,16 +15,16 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(private val repository: HomeRepository) :
     ViewModel() {
 
-    private val onAllProductsResponseLiveData = MutableLiveData<Resource<List<Product>>>()
+    private val _onAllProductsResponseLiveData = MutableLiveData<Resource<List<Product>>>()
 
     fun getOnAllProductsLiveData(): LiveData<Resource<List<Product>>> {
-        return onAllProductsResponseLiveData
+        return _onAllProductsResponseLiveData
     }
 
     fun getAllProducts() {
-        onAllProductsResponseLiveData.value = Resource.Loading()
+        _onAllProductsResponseLiveData.value = Resource.Loading()
         this.viewModelScope.launch {
-            onAllProductsResponseLiveData.value = repository.getAllProducts()
+            _onAllProductsResponseLiveData.value = repository.getAllProducts()
         }
     }
 
@@ -36,4 +36,7 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
         repository.removeFavorite(product)
     }
 
+    fun isAlreadyAdded(id: Int, callback: (Boolean) -> Unit) {
+        repository.isAlreadyAdded(id, callback)
+    }
 }

@@ -127,4 +127,8 @@ class HomeFragment : Fragment(), ChipGroup.OnCheckedChangeListener {
     fun removeFavorite(product: Product) {
         viewModel.removeFavorite(product)
     }
+
+    fun isFavoriteAlreadyAdded(id: Int, callback: (Boolean) -> Unit) {
+        viewModel.isAlreadyAdded(id, callback)
+    }
 }

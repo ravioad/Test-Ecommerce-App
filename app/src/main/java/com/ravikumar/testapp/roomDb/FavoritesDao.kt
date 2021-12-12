@@ -16,6 +16,9 @@ interface FavoritesDao {
 //    @Query("SELECT * FROM recentVideos WHERE subjectId =:subjectID ORDER BY createAt DESC LIMIT 1")
 //    fun getLatestWatchedVideoOfSubject(subjectID: String): LiveData<RecentWatchedVideo>
 
+    @Query("SELECT EXISTS(SELECT * FROM favorites WHERE id = :id)")
+    fun isAlreadyAdded(id: Int): Boolean
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(product: Product): Long
 //
